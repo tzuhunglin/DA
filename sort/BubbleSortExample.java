@@ -17,10 +17,12 @@ class ArrayBubble{
 
 	public void bubbleSort()
 	{
-		int out, in;
-		for (out = numValues-1; out>1; out--) //外迴圈的索引表示最大值最後會被移動到的位址，也表示這個位置的值以及這個位置之前的值為這一圈比教的對象。		
+		/*
+		外迴圈的指標out表示這一圈比較的終點，在這一圈
+		*/
+		for (int out = numValues-1; out>1; out--) //外迴圈的索引表示最大值最後會被移動到的位址，也表示這個位置的值以及這個位置之前的值為這一圈比教的對象。		
 		{
-			for (in=0; in<out; in++)//內回圈會抓出索引位置的直以及索引位置後一位得值進行比較
+			for (int in=0; in<out; in++)//內回圈會抓出索引位置的直以及索引位置後一位得值進行比較
 			{
 				if(arrBubble[in] > arrBubble[in+1])
 				{
@@ -69,7 +71,9 @@ class BubbleSortExample
 
 	}
 }
-
+/*
+非常慢 簡單
+*/
 
 
 

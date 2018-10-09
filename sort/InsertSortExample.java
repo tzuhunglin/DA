@@ -1,43 +1,42 @@
-class ArrayIns
+class ArrayInsert
 {
-	private long[] a;
-	private int nElems;
+	private long[] arrayInsert;
+	private int numValues;
 
-	public ArrayIns(int max)
+	public ArrayInsert(int max)
 	{
-		a = new long[max];
-		nElems = 0;
+		arrayInsert = new long[max];
+		numValues = 0;
 	}
 
 	public void insert(long value)
 	{
-		a[nElems] = value;
-		nElems++;
+		arrayInsert[numValues] = value;
+		numValues++;
 	}
 
 	public void display()
 	{
-		for (int j = 0; j<nElems; j++) 
+		for (int j = 0; j<numValues; j++) 
 		{
-			System.out.print(a[j]+ " ");	
+			System.out.print(arrayInsert[j]+ " ");	
 		}
 		System.out.println("");
 	}
 
 	public void insertionSort()
 	{
-		int in, out;
 
-		for (out = 1; out<nElems; out++) 
+		for ( int out = 1; out<numValues; out++) //從第一位遞增往後跑
 		{
-			long temp = a[out];	
-			in = out;
-			while(in >0 && a[in-1] >= temp)
+			long temp = arrayInsert[out];//存入暫存變數	
+			int in = out;
+			while(in > 0 && arrayInsert[in-1] >= temp)//所有的樹都跟temp比較,temp大就往後移,直到沒有將temp放入那一位	
 			{
-				a[in] = a[in-1];
+				arrayInsert[in] = arrayInsert[in-1];
 				--in;
 			}
-			a[in] = temp;
+			arrayInsert[in] = temp;
 		}
 	}
 }
@@ -46,23 +45,21 @@ class InsertSortExample
 {
 	public static void main(String[] args)
 	{
-		int maxSize = 100;
-		ArrayIns arr;
-		arr = new ArrayIns(maxSize);
+		ArrayInsert arrTest = new ArrayInsert(10);
 
-		arr.insert(9);
-		arr.insert(4);
-		arr.insert(3);
-		arr.insert(6);
-		arr.insert(7);
-		arr.insert(0);
-		arr.insert(5);
-		arr.insert(1);
-		arr.insert(2);
+		arrTest.insert(9);
+		arrTest.insert(4);
+		arrTest.insert(3);
+		arrTest.insert(6);
+		arrTest.insert(7);
+		arrTest.insert(0);
+		arrTest.insert(5);
+		arrTest.insert(1);
+		arrTest.insert(2);
 
-		arr.display();
-		arr.insertionSort();
-		arr.display();
+		arrTest.display();
+		arrTest.insertionSort();
+		arrTest.display();
 	}
 
 
