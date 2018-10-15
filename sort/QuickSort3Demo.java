@@ -17,8 +17,8 @@ class ArrayIns
 
 	public void display()
 	{
-		System.out.print("A=");
-		for(int j=0; j<nElems;j++)
+		System.out.print("A =");
+		for(int j=0; j<nElems; j++)
 		{
 			System.out.print(theArray[j]+" ");
 		}
@@ -32,15 +32,15 @@ class ArrayIns
 
 	public void recQuickSort(int left, int right)
 	{
-		int size = right-left+1;
-		if(size <=3)
+		int size = right - left +1;
+		if(size < 10)
 		{
-			manualSort(left,right);
+			insertionSort(left,right);
 		}else{
-			long median = medianOf3(left,right);
-			int partition = partitionIt(left,right, median);
+			long median = medianOf3(left, right);
+			int partition = partitionIt(left, right, median);
 			recQuickSort(left, partition -1);
-			recQuickSort(partition+1,right);
+			recQuickSort(partition +1, right);
 		}
 	}
 
@@ -52,16 +52,17 @@ class ArrayIns
 			swap(left,center);
 		}
 
-		if(theArray[left] > theArray[right]){
+		if(theArray[left] > theArray[right])
+		{
 			swap(left,right);
 		}
 
-		if(theArray[center]> theArray[right])
+		if(theArray[center] > theArray[right])
 		{
 			swap(center,right);
 		}
 
-		swap(center,right-1);
+		swap(center, right-1);
 		return theArray[right-1];
 	}
 
@@ -76,11 +77,10 @@ class ArrayIns
 	{
 		int leftPtr = left;
 		int rightPtr = right-1;
-
 		while(true)
 		{
-			while(theArray[++leftPtr]<pivot);
-			while(theArray[--rightPtr]>pivot);
+			while(theArray[++leftPtr]< pivot);
+			while(theArray[--rightPtr]> pivot);
 			if(leftPtr >= rightPtr)
 			{
 				break;
@@ -92,56 +92,46 @@ class ArrayIns
 		return leftPtr;
 	}
 
-	public void manualSort(int left, int right)
+	public void insertionSort(int left, int right)
 	{
-		int size = right-left+1;
-		if(size <=1)
+		int in , out;
+		for(out=left+1; out<=right; out++)
 		{
-			return;
-		}
-
-		if(size ==2){
-			if(theArray[left]>theArray[right])
+			long temp = theArray[out];
+			in = out;
+			while(in>left && theArray[in-1]>=temp)
 			{
-				swap(left,right);
+				theArray[in] = theArray[in -1];
+				--in;
 			}
-			return;
-		}else{
-			if(theArray[left] > theArray[right -1])
-			{
-				swap(left,right-1);
-			}
-			if(theArray[left]>theArray[right])
-			{
-				swap(left,right);
-			}
-			if(theArray[right-1] > theArray[right])
-			{
-				swap(right-1, right);
-			}
+			theArray[in] = temp;
 		}
 	}
 }
 
-class QuickSortDemo2
+class QuickSort3Demo
 {
-	public static void main(String[] args)
-	{
-		int maxSize = 16;
-		ArrayIns arr;
-		arr = new ArrayIns(maxSize);
-		for(int j=0; j < maxSize; j++)
-		{
-			long n = (int)(java.lang.Math.random()*99);
-			arr.insert(n);
-		}
+	 public static void main(String[] args)
+	 {
+	 	int maxSize = 16;
+	 	ArrayIns arr;
+	 	arr = new ArrayIns(maxSize);
 
-		arr.display();
-		arr.quickSort();
-		arr.display();
+	 	for(int j=0; j<maxSize; j++)
+	 	{
+	 		long n = (int)(java.lang.Math.random()*99);
+	 		arr.insert(n);
+	 	}
 
-	}
+	 	arr.display();
+	 	arr.quickSort();
+	 	arr.display();
+
+	 }
 }
+
+
+
 
 
 
