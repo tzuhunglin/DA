@@ -52,7 +52,6 @@ class Heap
 			{
 				largerChild = leftChild;
 			}
-
 			if(top.getKey()>= heapArray[largerChild].getKey())
 			{
 				break;
@@ -70,7 +69,7 @@ class Heap
 		int itemsPerRow = 1;
 		int column = 0;
 		int j = 0;
-		String dots = "......................................";
+		String dots = ".............";
 		System.out.println(dots+dots);
 
 		while(currentSize>0)
